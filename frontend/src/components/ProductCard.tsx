@@ -146,6 +146,13 @@ export function ProductCard({
           </button>
         </div>
 
+        {quantity > 1 && (
+          <p className="card__total" aria-live="polite">
+            Total do pedido: {quantity} × {formatCents(product.priceCents)} ={' '}
+            <strong>{formatCents(product.priceCents * quantity)}</strong>
+          </p>
+        )}
+
         <StatusPanel state={state} onRetry={() => void submit(quantity)} />
       </div>
     </article>
