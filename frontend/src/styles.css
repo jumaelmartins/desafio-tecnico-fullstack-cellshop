@@ -1,0 +1,340 @@
+/* ── Tokens ──────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --ink: #16181f;
+  --ink-soft: #5b6172;
+  --line: #e3e7f0;
+  --accent: #16181f;
+  --accent-ink: #ffffff;
+  --success-bg: #e9f9ef;
+  --success-ink: #176939;
+  --warn-bg: #fff6e0;
+  --warn-ink: #8a5a00;
+  --error-bg: #ffeceb;
+  --error-ink: #a3271d;
+  --radius: 18px;
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, #e7ecfa 0%, transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.hero__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.hero__note {
+  max-width: 620px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  margin: 0 0 40px;
+}
+
+/* ── Grid e card ─────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(22, 24, 31, 0.09);
+}
+
+.card--soldout {
+  opacity: 0.62;
+}
+
+.card__body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card h2 {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card__desc {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  min-height: 2.7em;
+}
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.stock {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.stock--low {
+  color: var(--warn-ink);
+  font-weight: 600;
+}
+
+/* ── Assinatura visual: o tile é uma capinha ─────────────────────────────── */
+.case-tile {
+  display: grid;
+  place-items: center;
+  padding: 26px 0 10px;
+  background: linear-gradient(180deg, #fafbff 0%, #f1f3fa 100%);
+}
+
+.case-shell {
+  width: 96px;
+  height: 176px;
+  border-radius: 26px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 0.55),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.16),
+    0 14px 24px rgba(22, 24, 31, 0.18);
+}
+
+.case-camera {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.45);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  padding: 4px;
+}
+
+.case-camera i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #9fb6ff 0%, #1b2030 55%);
+}
+
+.case-emoji {
+  font-size: 2rem;
+  transform: translateY(26px);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* ── Ações ───────────────────────────────────────────────────────────────── */
+.card__actions {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.stepper button {
+  width: 34px;
+  height: 100%;
+  min-height: 42px;
+  border: 0;
+  background: transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.stepper button:disabled {
+  color: #b9bfce;
+  cursor: not-allowed;
+}
+
+.stepper span {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  flex: 1;
+  min-height: 42px;
+  padding: 0 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn--ghost {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #4c6fff;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Painéis de status ───────────────────────────────────────────────────── */
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+}
+
+.status code {
+  font-size: 0.82em;
+}
+
+.status--success {
+  background: var(--success-bg);
+  color: var(--success-ink);
+}
+
+.status--warn {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+.status--error {
+  background: var(--error-bg);
+  color: var(--error-ink);
+}
+
+.loading-list {
+  color: var(--ink-soft);
+}
+
+.footer {
+  margin-top: 56px;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
